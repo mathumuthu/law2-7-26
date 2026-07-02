@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Create Password</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .create-password-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--bg-card-border);
+            border-radius: 24px;
+            padding: 40px 35px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(  fbdv  xdgvdgbgbvn);
+            animation: cardAppear 0.8s ease-out;
+        }
+        .create-password-card:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), var(--shadow-glow), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            transition: 0.5s ease;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: 0.3s ease;
+        }
+        .back-link:hover {
+            color: var(--primary-light);
+        }
+        .back-link i {
+            transition: 0.3s ease;
+        }
+        .back-link:hover i {
+            transform: translateX(-4px);
+        }
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .page-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+        @media (max-width: 576px) {
+            .create-password-card { padding: 30px 20px; }
+        }
+    </style>
+<!-- <base target="_blank"> -->
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+        <div class="bg-circle circle-4"></div>
+    </div>
+
+    <div class="container login-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7 col-sm-10">
+                <div class="create-password-card">
+                    <a href="login.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Login
+                    </a>
+
+                    <div class="logo-section text-center">
+                        <div class="logo-wrapper">
+                                        <div class="logo-section text-center">
+                        <div class="logo-wrapper">
+                          <div class="logo-wrapper">
+    <img src="logo.webp" alt="Stackly Logo" class="logo-img">
+</div>
+                    <h2 class="page-title text-center">STACKLY</h2>
+
+                    <h2 class="page-title text-center">Create Password</h2>
+                    <p class="page-subtitle text-center">Set up a secure password for your account</p>
+
+                    <form id="createPasswordForm" novalidate>
+                        <div class="form-group mb-3">
+                            <label for="newName" class="form-label">
+                                <i class="fas fa-user-circle me-2"></i>Full Name
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-control" id="newName" placeholder="Enter your full name">
+                                <span class="input-icon"><i class="fas fa-check-circle"></i></span>
+                            </div>
+                            <div class="invalid-feedback" id="newNameError">Only letters are allowed.</div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="newMobile" class="form-label">
+                                <i class="fas fa-mobile-alt me-2"></i>Mobile Number
+                            </label>
+                            <div class="input-wrapper"><input
+    type="tel"
+    class="form-control"
+    id="newMobile"
+    placeholder="Enter your mobile number"
+    maxlength="10"
+    inputmode="numeric">
+                                <span class="input-icon"><i class="fas fa-check-circle"></i></span>
+                            </div>
+                            <div class="invalid-feedback" id="newMobileError">Only numbers are allowed.</div>
+                        </div>
+
+
+
+
+
+
+
+<!-- Email Field -->
+<div class="form-group mb-3">
+    <label for="emailInput" class="form-label">
+        <i class="fas fa-envelope me-2"></i>Email Address
+    </label>
+
+    <div class="input-wrapper">
+        <input
+            type="email"
+            class="form-control"
+            id="emailInput"
+            placeholder="Enter your email address"
+            autocomplete="off">
+
+        <span class="input-icon">
+            <i class="fas fa-check-circle"></i>
+        </span>
+    </div>
+
+    <div class="invalid-feedback" id="emailError">
+        Please enter a valid email address.
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                        
+
+                        <div class="form-group mb-3">
+                            <label for="newPassword" class="form-label">
+                                <i class="fas fa-lock me-2"></i>New Password
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="password" class="form-control" id="newPassword" placeholder="Create a password">
+                                <button type="button" class="toggle-password" id="toggleNewPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-validation" id="newPasswordValidation">
+                                <div class="validation-item" id="newValLength"><i class="fas fa-circle"></i><span>At least 8 characters</span></div>
+                                <div class="validation-item" id="newValUpper"><i class="fas fa-circle"></i><span>One uppercase letter</span></div>
+                                <div class="validation-item" id="newValLower"><i class="fas fa-circle"></i><span>One lowercase letter</span></div>
+                                <div class="validation-item" id="newValNumber"><i class="fas fa-circle"></i><span>One number</span></div>
+                                <div class="validation-item" id="newValSpecial"><i class="fas fa-circle"></i><span>One special character</span></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="confirmPassword" class="form-label">
+                                <i class="fas fa-lock me-2"></i>Confirm Password
+                            </label>
+                            <div class="input-wrapper">
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+                                <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback" id="confirmPasswordError">Passwords do not match.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-login" id="createBtn" disabled>
+                            <span class="btn-text">Create account</span>
+                            <span class="btn-loader"><i class="fas fa-spinner fa-spin"></i></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newName = document.getElementById('newName');
+            const newMobile = document.getElementById('newMobile');
+            const newPassword = document.getElementById('newPassword');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const createBtn = document.getElementById('createBtn');
+            const createForm = document.getElementById('createPasswordForm');
+
+let isNewNameValid = false,
+    isNewMobileValid = false,
+    isEmailValid = false,
+    isNewPasswordValid = false,
+    isConfirmValid = false;
+            function validateNewName(v) {
+                const clean = v.replace(/[^a-zA-Z\s]/g, '');
+                if (v !== clean) newName.value = clean;
+                const ok = /^[a-zA-Z\s]+$/.test(v) && v.trim().length >= 2;
+                isNewNameValid = ok;
+                newName.classList.toggle('is-valid', ok);
+                newName.classList.toggle('is-invalid', v.length > 0 && !ok);
+                document.getElementById('newNameError').classList.toggle('show', v.length > 0 && !ok);
+                checkCreateValidity();
+            }
+            newName.addEventListener('input', e => validateNewName(e.target.value));
+
+            function validateNewMobile(v) {
+                const clean = v.replace(/[^0-9]/g, '');
+                if (v !== clean) newMobile.value = clean;
+                const ok = /^[0-9]+$/.test(v) && v.length >= 10;
+                isNewMobileValid = ok;
+                newMobile.classList.toggle('is-valid', ok);
+                newMobile.classList.toggle('is-invalid', v.length > 0 && !ok);
+                document.getElementById('newMobileError').classList.toggle('show', v.length > 0 && !ok);
+                checkCreateValidity();
+
+                const emailInput = document.getElementById("emailInput");
+
+function validateEmail() {
+
+    const email = emailInput.value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    isEmailValid = emailRegex.test(email);
+
+    if (email === "") {
+        emailInput.classList.remove("is-valid", "is-invalid");
+        isEmailValid = false;
+    }
+    else if (isEmailValid) {
+        emailInput.classList.remove("is-invalid");
+        emailInput.classList.add("is-valid");
+    }
+    else {
+        emailInput.classList.remove("is-valid");
+        emailInput.classList.add("is-invalid");
+    }
+
+    checkCreateValidity();
+}
+
+emailInput.addEventListener("input", validateEmail);
+            }
+            newMobile.addEventListener('input', e => validateNewMobile(e.target.value));
+
+            function updateVal(el, ok) {
+                el.classList.toggle('valid', ok);
+                const i = el.querySelector('i');
+                i.classList.toggle('fa-circle', !ok);
+                i.classList.toggle('fa-check-circle', ok);
+            }
+            function validateNewPassword(v) {
+                const hL = v.length >= 8, hU = /[A-Z]/.test(v), hLo = /[a-z]/.test(v), hN = /[0-9]/.test(v), hS = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>\/?]/.test(v);
+                updateVal(document.getElementById('newValLength'), hL);
+                updateVal(document.getElementById('newValUpper'), hU);
+                updateVal(document.getElementById('newValLower'), hLo);
+                updateVal(document.getElementById('newValNumber'), hN);
+                updateVal(document.getElementById('newValSpecial'), hS);
+                isNewPasswordValid = hL && hU && hLo && hN && hS;
+                newPassword.classList.toggle('is-valid', isNewPasswordValid);
+                checkCreateValidity();
+            }
+            newPassword.addEventListener('focus', () => document.getElementById('newPasswordValidation').classList.add('show'));
+            newPassword.addEventListener('input', e => validateNewPassword(e.target.value));
+            newPassword.addEventListener('blur', () => { if(newPassword.value.length===0) document.getElementById('newPasswordValidation').classList.remove('show'); });
+
+            function validateConfirm(v) {
+                isConfirmValid = v === newPassword.value && v.length > 0 && isNewPasswordValid;
+                confirmPassword.classList.toggle('is-valid', isConfirmValid);
+                confirmPassword.classList.toggle('is-invalid', v.length > 0 && !isConfirmValid);
+                document.getElementById('confirmPasswordError').classList.toggle('show', v.length > 0 && !isConfirmValid);
+                checkCreateValidity();
+            }
+            confirmPassword.addEventListener('input', e => validateConfirm(e.target.value));
+
+            function checkCreateValidity() {
+createBtn.disabled = !(
+    isNewNameValid &&
+    isNewMobileValid &&
+    isEmailValid &&
+    isNewPasswordValid &&
+    isConfirmValid
+);            }
+
+            document.getElementById('toggleNewPassword').addEventListener('click', function() {
+                const t = newPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                newPassword.setAttribute('type', t);
+                this.querySelector('i').className = t === 'text' ? 'fas fa-eye-slash' : 'fas fa-eye';
+            });
+            document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+                const t = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPassword.setAttribute('type', t);
+                this.querySelector('i').className = t === 'text' ? 'fas fa-eye-slash' : 'fas fa-eye';
+            });
+
+            createForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!isNewNameValid || !isNewMobileValid || !isNewPasswordValid || !isConfirmValid) return;
+                createBtn.classList.add('loading');
+                createBtn.disabled = true;
+                setTimeout(() => {
+                    createBtn.classList.remove('loading');
+                    createBtn.disabled = false;
+                    const overlay = document.createElement('div');
+                    overlay.className = 'success-overlay';
+                    overlay.innerHTML = '<div class="success-content"><div class="success-icon"><i class="fas fa-check"></i></div><h3>Password Created!</h3><p>Your password has been set successfully.</p></div>';
+                    document.body.appendChild(overlay);
+                    setTimeout(() => overlay.classList.add('show'), 10);
+                    setTimeout(() => { overlay.classList.remove('show'); setTimeout(() => overlay.remove(), 300); window.location.href = 'login.html'; }, 2500);
+                }, 2000);
+            });
+        });
+
+
+
+
+
+
+
+
+const emailInput = document.getElementById("emailInput");
+
+emailInput.addEventListener("input", validateEmail);
+
+function validateEmail(){
+
+    const email = emailInput.value.trim();
+
+    const emailRegex =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(email === ""){
+        emailInput.classList.remove("is-valid","is-invalid");
+    }
+    else if(emailRegex.test(email)){
+        emailInput.classList.remove("is-invalid");
+        emailInput.classList.add("is-valid");
+    }
+    else{
+        emailInput.classList.remove("is-valid");
+        emailInput.classList.add("is-invalid");
+    }
+
+    validateForm();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function validateNewMobile(v) {
+
+    const clean = v.replace(/\D/g, "").slice(0, 10);
+
+    newMobile.value = clean;
+
+    const ok = clean.length === 10;
+
+    isNewMobileValid = ok;
+
+    newMobile.classList.toggle("is-valid", ok);
+    newMobile.classList.toggle("is-invalid", clean.length > 0 && !ok);
+
+    document.getElementById("newMobileError")
+        .classList.toggle("show", clean.length > 0 && !ok);
+
+    checkCreateValidity();
+}
+
+
+
+
+
+
+    </script>
+</body>
+</html>
