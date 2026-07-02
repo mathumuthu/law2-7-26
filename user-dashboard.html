@@ -1,0 +1,4234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - User Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="user-style.css">
+</head>
+<body>
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Logo Area -->
+        <div class="sidebar-header">
+                                                <a href="index.html" class="logo">
+    <img src="logo.webp" alt="Starkly Logo" class="logo-img">
+    <span class="logo-text">Stackly</span>
+</a>
+            <button class="sidebar-close d-lg-none" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- User Info in Sidebar -->
+        <div class="sidebar-user">
+            <img src="https://ui-avatars.com/api/?name=John+Doe&background=6366f1&color=fff" alt="User" class="sidebar-user-avatar">
+            <div class="sidebar-user-info">
+                <h6>John Doe</h6>
+                <span>Client Account</span>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="sidebar-nav">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-section="dashboard">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-th-large menu-icon"></i>
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item" data-section="my-cases">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-briefcase menu-icon"></i>
+                        <span class="menu-text">My Cases</span>
+                    </a>
+                </li>
+                <li class="menu-item" data-section="documents">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-file-alt menu-icon"></i>
+                        <span class="menu-text">My Documents</span>
+                    </a>
+                </li>
+                <li class="menu-item" data-section="appointments">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-calendar-alt menu-icon"></i>
+                        <span class="menu-text">Appointments</span>
+                    </a>
+                </li>
+                <!-- <li class="menu-item" data-section="messages">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-comments menu-icon"></i>
+                        <span class="menu-text">Messages</span>
+                        <span class="menu-badge">3</span>
+                    </a>
+                </li> -->
+                <!-- <li class="menu-item" data-section="payments">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-credit-card menu-icon"></i>
+                        <span class="menu-text">Payments</span>
+                    </a>
+                </li> -->
+                <li class="menu-item" data-section="legal-resources">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-book-open menu-icon"></i>
+                        <span class="menu-text">Legal Resources</span>
+                    </a>
+                </li>
+                <!-- <li class="menu-item" data-section="profile">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-user menu-icon"></i>
+                        <span class="menu-text">My Profile</span>
+                    </a>
+                </li> -->
+                <li class="menu-item" data-section="support">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-headset menu-icon"></i>
+                        <span class="menu-text">Support</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Logout Button -->
+            <div class="sidebar-footer">
+                <a href="login.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper" id="mainWrapper">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <!-- Hamburger Menu (Mobile) -->
+                <button class="hamburger-menu d-lg-none" id="hamburgerMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- Sidebar Toggle (Desktop) -->
+                <button class="sidebar-toggle d-none d-lg-flex" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- Page Title -->
+                <h4 class="page-title d-none d-md-block" id="pageTitle">Dashboard</h4>
+            </div>
+
+            <div class="header-right">
+                <!-- Search Box -->
+                <!-- <div class="search-box d-none d-md-block">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search cases, documents..." class="search-input">
+                </div> -->
+                <!-- Notification -->
+                <div class="header-icon-wrapper">
+                    <a href="404.html" class="header-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </a>
+                </div>
+                <!-- Messages -->
+                <div class="header-icon-wrapper">
+                    <a href="404.html" class="header-icon">
+                        <i class="fas fa-envelope"></i>
+                        <span class="notification-badge">3</span>
+                    </a>
+                </div>
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown" id="profileDropdown">
+                <a href="404.html">    <button class="profile-btn" id="profileBtn">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=6366f1&color=fff" alt="Profile" class="profile-img">
+                        <span class="profile-name d-none d-md-inline">John Doe</span>
+                        <i class="fas fa-chevron-down profile-arrow"></i>
+                    </button></a>
+                    <div class="dropdown-menu profile-menu" id="profileMenu">
+                        <a href="404.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> My Profile
+                        </a>
+                        <a href="404.html" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Account Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="404.html" class="dropdown-item text-danger">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard">
+                <div class="section-header">
+                    <h1 class="section-title">Welcome back, John!</h1>
+                    <p class="section-subtitle">Here's what's happening with your legal matters</p>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="row g-4 mb-4">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card stat-card-primary">
+                            <div class="stat-card-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="stat-card-info">
+                                <h3>4</h3>
+                                <p>Active Cases</p>
+                            </div>
+                            <div class="stat-card-trend up">
+                                <i class="fas fa-arrow-up"></i> 2 new
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card stat-card-success">
+                            <div class="stat-card-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-card-info">
+                                <h3>12</h3>
+                                <p>Resolved Cases</p>
+                            </div>
+                            <div class="stat-card-trend up">
+                                <i class="fas fa-arrow-up"></i> +3
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card stat-card-warning">
+                            <div class="stat-card-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-card-info">
+                                <h3>8</h3>
+                                <p>Pending Documents</p>
+                            </div>
+                            <div class="stat-card-trend">
+                                <span>Action needed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card stat-card-info">
+                            <div class="stat-card-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-card-info">
+                                <h3>2</h3>
+                                <p>Upcoming Meetings</p>
+                            </div>
+                            <div class="stat-card-trend">
+                                <span>This week</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Row -->
+                <div class="row g-4 mb-4">
+                    <!-- Recent Activity -->
+                    <div class="col-lg-8">
+                        <div class="content-card">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Recent Activity</h5>
+                                <a href="404.html" class="btn btn-sm btn-outline-primary">View All</a>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-primary-soft">
+                                            <i class="fas fa-file-upload text-primary"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6>Document Uploaded</h6>
+                                            <p>You uploaded "Contract_Agreement_v2.pdf" to Case #2024-001</p>
+                                            <span class="activity-time">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-success-soft">
+                                            <i class="fas fa-gavel text-success"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6>Case Update</h6>
+                                            <p>Your case "Property Dispute" has been moved to hearing stage</p>
+                                            <span class="activity-time">Yesterday</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-warning-soft">
+                                            <i class="fas fa-calendar text-warning"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6>Appointment Scheduled</h6>
+                                            <p>Meeting with Attorney Smith on July 5, 2026 at 10:00 AM</p>
+                                            <span class="activity-time">2 days ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-info-soft">
+                                            <i class="fas fa-comment text-info"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6>New Message</h6>
+                                            <p>Attorney Johnson sent you a message regarding Case #2024-003</p>
+                                            <span class="activity-time">3 days ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Upcoming Appointments -->
+                    <div class="col-lg-4">
+                        <div class="content-card">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Upcoming Appointments</h5>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="appointment-list">
+                                    <div class="appointment-item">
+                                        <div class="appointment-date">
+                                            <span class="day">05</span>
+                                            <span class="month">JUL</span>
+                                        </div>
+                                        <div class="appointment-details">
+                                            <h6>Case Review Meeting</h6>
+                                            <p><i class="fas fa-clock"></i> 10:00 AM - 11:00 AM</p>
+                                            <p><i class="fas fa-video"></i> Video Call</p>
+                                            <span class="appointment-with">with Attorney Smith</span>
+                                        </div>
+                                    </div>
+                                    <div class="appointment-item">
+                                        <div class="appointment-date">
+                                            <span class="day">08</span>
+                                            <span class="month">JUL</span>
+                                        </div>
+                                        <div class="appointment-details">
+                                            <h6>Document Signing</h6>
+                                            <p><i class="fas fa-clock"></i> 2:00 PM - 3:00 PM</p>
+                                            <p><i class="fas fa-building"></i> Office Visit</p>
+                                            <span class="appointment-with">with Paralegal Davis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="404.html" class="btn btn-primary w-100 mt-3">Schedule New Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Cases Preview -->
+                <div class="content-card">
+                    <div class="card-header-custom">
+                        <h5 class="card-title">My Active Cases</h5>
+                        <a href="404.html" class="btn btn-sm btn-outline-primary">View All Cases</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Case ID</th>
+                                    <th>Case Title</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Last Updated</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="case-id">#2024-001</span></td>
+                                    <td>Property Dispute Resolution</td>
+                                    <td>Civil Law</td>
+                                    <td><span class="badge-status status-hearing">Hearing</span></td>
+                                    <td>Jun 28, 2026</td>
+                                    <td>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-eye"></i></a>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-file-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="case-id">#2024-002</span></td>
+                                    <td>Contract Review - ABC Corp</td>
+                                    <td>Corporate Law</td>
+                                    <td><span class="badge-status status-review">Review</span></td>
+                                    <td>Jun 25, 2026</td>
+                                    <td>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-eye"></i></a>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-file-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="case-id">#2024-003</span></td>
+                                    <td>Family Estate Planning</td>
+                                    <td>Family Law</td>
+                                    <td><span class="badge-status status-active">Active</span></td>
+                                    <td>Jun 20, 2026</td>
+                                    <td>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-eye"></i></a>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-file-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="case-id">#2024-004</span></td>
+                                    <td>Trademark Registration</td>
+                                    <td>Corporate Law</td>
+                                    <td><span class="badge-status status-pending">Pending</span></td>
+                                    <td>Jun 15, 2026</td>
+                                    <td>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-eye"></i></a>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-file-alt"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Cases Section -->
+            <section class="content-section" id="my-cases">
+                <div class="section-header">
+                    <h1 class="section-title">My Cases</h1>
+                    <p class="section-subtitle">Track and manage all your legal cases</p>
+                </div>
+
+                <!-- Case Filters -->
+                <div class="filter-bar mb-4">
+                    <!-- <div class="filter-group">
+                        <button class="filter-btn active">All Cases</button>
+                        <button class="filter-btn">Active</button>
+                        <button class="filter-btn">Pending</button>
+                        <button class="filter-btn">Resolved</button>
+                    </div> -->
+                    <a href="404.html" class="btn btn-primary"><i class="fas fa-plus"></i> New Case Request</a>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Case Card 1 -->
+                    <div class="col-md-6 col-xl-4">
+                        <div class="case-card">
+                            <div class="case-card-header">
+                                <span class="case-badge status-hearing">Hearing</span>
+                                <div class="case-menu">
+                                    <a href="404.html"><i class="fas fa-ellipsis-v"></i></a>
+                                </div>
+                            </div>
+                            <h4>Property Dispute Resolution</h4>
+                            <p class="case-id">Case #2024-001</p>
+                            <div class="case-meta">
+                                <span><i class="fas fa-gavel"></i> Civil Law</span>
+                                <span><i class="fas fa-calendar"></i> Opened Jan 15, 2026</span>
+                            </div>
+                            <div class="case-progress">
+                                <div class="progress-label">
+                                    <span>Progress</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-primary" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="case-footer">
+                                <div class="case-attorney">
+                                    <img src="https://ui-avatars.com/api/?name=Attorney+Smith&background=random" alt="">
+                                    <span>Attorney Smith</span>
+                                </div>
+                                <a href="404.html" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Card 2 -->
+                    <div class="col-md-6 col-xl-4">
+                        <div class="case-card">
+                            <div class="case-card-header">
+                                <span class="case-badge status-review">Review</span>
+                                <div class="case-menu">
+                                    <a href="404.html"><i class="fas fa-ellipsis-v"></i></a>
+                                </div>
+                            </div>
+                            <h4>Contract Review - ABC Corp</h4>
+                            <p class="case-id">Case #2024-002</p>
+                            <div class="case-meta">
+                                <span><i class="fas fa-gavel"></i> Corporate Law</span>
+                                <span><i class="fas fa-calendar"></i> Opened Feb 20, 2026</span>
+                            </div>
+                            <div class="case-progress">
+                                <div class="progress-label">
+                                    <span>Progress</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-warning" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="case-footer">
+                                <div class="case-attorney">
+                                    <img src="https://ui-avatars.com/api/?name=Attorney+Johnson&background=random" alt="">
+                                    <span>Attorney Johnson</span>
+                                </div>
+                                <a href="404.html" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Card 3 -->
+                    <div class="col-md-6 col-xl-4">
+                        <div class="case-card">
+                            <div class="case-card-header">
+                                <span class="case-badge status-active">Active</span>
+                                <div class="case-menu">
+                                    <a href="404.html"><i class="fas fa-ellipsis-v"></i></a>
+                                </div>
+                            </div>
+                            <h4>Family Estate Planning</h4>
+                            <p class="case-id">Case #2024-003</p>
+                            <div class="case-meta">
+                                <span><i class="fas fa-gavel"></i> Family Law</span>
+                                <span><i class="fas fa-calendar"></i> Opened Mar 10, 2026</span>
+                            </div>
+                            <div class="case-progress">
+                                <div class="progress-label">
+                                    <span>Progress</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-success" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="case-footer">
+                                <div class="case-attorney">
+                                    <img src="https://ui-avatars.com/api/?name=Attorney+Williams&background=random" alt="">
+                                    <span>Attorney Williams</span>
+                                </div>
+                                <a href="404.html" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Card 4 -->
+                    <div class="col-md-6 col-xl-4">
+                        <div class="case-card">
+                            <div class="case-card-header">
+                                <span class="case-badge status-pending">Pending</span>
+                                <div class="case-menu">
+                                    <a href="404.html"><i class="fas fa-ellipsis-v"></i></a>
+                                </div>
+                            </div>
+                            <h4>Trademark Registration</h4>
+                            <p class="case-id">Case #2024-004</p>
+                            <div class="case-meta">
+                                <span><i class="fas fa-gavel"></i> Corporate Law</span>
+                                <span><i class="fas fa-calendar"></i> Opened Apr 5, 2026</span>
+                            </div>
+                            <div class="case-progress">
+                                <div class="progress-label">
+                                    <span>Progress</span>
+                                    <span>25%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-info" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <div class="case-footer">
+                                <div class="case-attorney">
+                                    <img src="https://ui-avatars.com/api/?name=Attorney+Brown&background=random" alt="">
+                                    <span>Attorney Brown</span>
+                                </div>
+                                <a href="404.html" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resolved Case -->
+                    <!-- <div class="col-md-6 col-xl-4">
+                        <div class="case-card case-resolved">
+                            <div class="case-card-header">
+                                <span class="case-badge status-resolved">Resolved</span>
+                                <div class="case-menu">
+                                    <a href="404.html"><i class="fas fa-ellipsis-v"></i></a>
+                                </div>
+                            </div>
+                            <h4>Divorce Settlement</h4>
+                            <p class="case-id">Case #2023-089</p>
+                            <div class="case-meta">
+                                <span><i class="fas fa-gavel"></i> Family Law</span>
+                                <span><i class="fas fa-calendar"></i> Resolved Dec 2025</span>
+                            </div>
+                            <div class="case-progress">
+                                <div class="progress-label">
+                                    <span>Progress</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-custom">
+                                    <div class="progress-bar-custom bg-success" style="width: 100%"></div>
+                                </div>
+                            </div> -->
+                            <!-- <div class="case-footer">
+                                <div class="case-attorney">
+                                    <img src="https://ui-avatars.com/api/?name=Attorney+Williams&background=random" alt="">
+                                    <span>Attorney Williams</span>
+                                </div>
+                                <a href="404.html" class="btn btn-sm btn-outline-secondary">View Archive</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </section>
+
+            <!-- Documents Section -->
+            <section class="content-section" id="documents">
+                <div class="section-header">
+                    <h1 class="section-title">My Documents</h1>
+                    <p class="section-subtitle">Access and manage your legal documents</p>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-8">
+                        <div class="search-box-large">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search documents by name, case, or type..." class="form-control-custom">
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <a href="404.html" class="btn btn-primary"><i class="fas fa-upload"></i> Upload Document</a>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Document Card 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="document-card-v2">
+                            <div class="document-preview">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="document-info">
+                                <h5>Contract_Agreement_v2.pdf</h5>
+                                <p>Case #2024-002 - ABC Corp</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> Jun 28, 2026</span>
+                                    <span><i class="fas fa-hdd"></i> 2.4 MB</span>
+                                </div>
+                            </div>
+                            <div class="document-actions">
+                                <a href="404.html" class="btn-action" title="View"><i class="fas fa-eye"></i></a>
+                                <a href="404.html" class="btn-action" title="Download"><i class="fas fa-download"></i></a>
+                                <a href="404.html" class="btn-action" title="Share"><i class="fas fa-share-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document Card 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="document-card-v2">
+                            <div class="document-preview doc-word">
+                                <i class="fas fa-file-word"></i>
+                            </div>
+                            <div class="document-info">
+                                <h5>Property_Deed_Draft.docx</h5>
+                                <p>Case #2024-001 - Property Dispute</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> Jun 25, 2026</span>
+                                    <span><i class="fas fa-hdd"></i> 856 KB</span>
+                                </div>
+                            </div>
+                            <div class="document-actions">
+                                <a href="404.html" class="btn-action" title="View"><i class="fas fa-eye"></i></a>
+                                <a href="404.html" class="btn-action" title="Download"><i class="fas fa-download"></i></a>
+                                <a href="404.html" class="btn-action" title="Share"><i class="fas fa-share-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document Card 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="document-card-v2">
+                            <div class="document-preview doc-image">
+                                <i class="fas fa-file-image"></i>
+                            </div>
+                            <div class="document-info">
+                                <h5>Evidence_Photos.zip</h5>
+                                <p>Case #2024-001 - Property Dispute</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> Jun 20, 2026</span>
+                                    <span><i class="fas fa-hdd"></i> 15.2 MB</span>
+                                </div>
+                            </div>
+                            <div class="document-actions">
+                                <a href="404.html" class="btn-action" title="View"><i class="fas fa-eye"></i></a>
+                                <a href="404.html" class="btn-action" title="Download"><i class="fas fa-download"></i></a>
+                                <a href="404.html" class="btn-action" title="Share"><i class="fas fa-share-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Document Card 4 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="document-card-v2">
+                            <div class="document-preview doc-excel">
+                                <i class="fas fa-file-excel"></i>
+                            </div>
+                            <div class="document-info">
+                                <h5>Financial_Statements_Q2.xlsx</h5>
+                                <p>Case #2024-003 - Estate Planning</p>
+                                <div class="document-meta">
+                                    <span><i class="fas fa-calendar"></i> Jun 15, 2026</span>
+                                    <span><i class="fas fa-hdd"></i> 1.1 MB</span>
+                                </div>
+                            </div>
+                            <div class="document-actions">
+                                <a href="404.html" class="btn-action" title="View"><i class="fas fa-eye"></i></a>
+                                <a href="404.html" class="btn-action" title="Download"><i class="fas fa-download"></i></a>
+                                <a href="404.html" class="btn-action" title="Share"><i class="fas fa-share-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section class="content-section" id="appointments">
+                <div class="section-header">
+                    <h1 class="section-title">Appointments</h1>
+                    <p class="section-subtitle">Schedule and manage your meetings</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="content-card">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Upcoming Appointments</h5>
+                                <a href="404.html" class="btn btn-sm btn-primary">Schedule New</a>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="appointment-list-v2">
+                                    <div class="appointment-card">
+                                        <div class="appointment-status confirmed">
+                                            <i class="fas fa-check-circle"></i> Confirmed
+                                        </div>
+                                        <div class="appointment-body">
+                                            <h5>Case Review Meeting</h5>
+                                            <p class="appointment-case">Case #2024-001 - Property Dispute</p>
+                                            <div class="appointment-details-row">
+                                                <span><i class="fas fa-calendar"></i> July 5, 2026</span>
+                                                <span><i class="fas fa-clock"></i> 10:00 AM - 11:00 AM</span>
+                                                <span><i class="fas fa-video"></i> Video Call</span>
+                                            </div>
+                                            <div class="appointment-attorney">
+                                                <img src="https://ui-avatars.com/api/?name=Attorney+Smith&background=random" alt="">
+                                                <div>
+                                                    <h6>Attorney Smith</h6>
+                                                    <p>Senior Partner</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="appointment-actions">
+                                            <a href="404.html" class="btn btn-outline-primary btn-sm">Reschedule</a>
+                                            <a href="404.html" class="btn btn-primary btn-sm">Join Meeting</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="appointment-card">
+                                        <div class="appointment-status confirmed">
+                                            <i class="fas fa-check-circle"></i> Confirmed
+                                        </div>
+                                        <div class="appointment-body">
+                                            <h5>Document Signing</h5>
+                                            <p class="appointment-case">Case #2024-002 - ABC Corp Contract</p>
+                                            <div class="appointment-details-row">
+                                                <span><i class="fas fa-calendar"></i> July 8, 2026</span>
+                                                <span><i class="fas fa-clock"></i> 2:00 PM - 3:00 PM</span>
+                                                <span><i class="fas fa-building"></i> Office Visit</span>
+                                            </div>
+                                            <div class="appointment-attorney">
+                                                <img src="https://ui-avatars.com/api/?name=Paralegal+Davis&background=random" alt="">
+                                                <div>
+                                                    <h6>Paralegal Davis</h6>
+                                                    <p>Legal Assistant</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="appointment-actions">
+                                            <a href="404.html" class="btn btn-outline-primary btn-sm">Reschedule</a>
+                                            <a href="404.html" class="btn btn-outline-secondary btn-sm">Get Directions</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="appointment-card">
+                                        <div class="appointment-status pending">
+                                            <i class="fas fa-clock"></i> Pending
+                                        </div>
+                                        <div class="appointment-body">
+                                            <h5>Initial Consultation</h5>
+                                            <p class="appointment-case">New Case - Trademark Filing</p>
+                                            <div class="appointment-details-row">
+                                                <span><i class="fas fa-calendar"></i> July 12, 2026</span>
+                                                <span><i class="fas fa-clock"></i> 11:00 AM - 12:00 PM</span>
+                                                <span><i class="fas fa-phone"></i> Phone Call</span>
+                                            </div>
+                                            <div class="appointment-attorney">
+                                                <img src="https://ui-avatars.com/api/?name=Attorney+Brown&background=random" alt="">
+                                                <div>
+                                                    <h6>Attorney Brown</h6>
+                                                    <p>IP Specialist</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="appointment-actions">
+                                            <a href="404.html" class="btn btn-outline-danger btn-sm">Cancel</a>
+                                            <a href="404.html" class="btn btn-primary btn-sm">Confirm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="content-card">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Quick Schedule</h5>
+                            </div>
+                            <div class="card-body-custom">
+                                <form class="quick-schedule-form">
+                                    <div class="mb-3">
+                                        <label class="form-label">Meeting Type</label>
+                                        <select class="form-control-custom">
+                                            <option>Case Review</option>
+                                            <option>Document Signing</option>
+                                            <option>Initial Consultation</option>
+                                            <option>Follow-up</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Case</label>
+                                        <select class="form-control-custom">
+                                            <option>Case #2024-001 - Property Dispute</option>
+                                            <option>Case #2024-002 - ABC Corp</option>
+                                            <option>Case #2024-003 - Estate Planning</option>
+                                            <option>Case #2024-004 - Trademark</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Preferred Date</label>
+                                        <input type="date" class="form-control-custom">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Preferred Time</label>
+                                        <input type="time" class="form-control-custom">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Meeting Type</label>
+                                        <div class="meeting-type-options">
+                                            <label class="meeting-option">
+                                                <input type="radio" name="meetingType" checked>
+                                                <span><i class="fas fa-video"></i> Video</span>
+                                            </label>
+                                            <label class="meeting-option">
+                                                <input type="radio" name="meetingType">
+                                                <span><i class="fas fa-building"></i> Office</span>
+                                            </label>
+                                            <label class="meeting-option">
+                                                <input type="radio" name="meetingType">
+                                                <span><i class="fas fa-phone"></i> Phone</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <a href="404.html" class="btn btn-primary w-100">Request Appointment</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section class="content-section" id="messages">
+                <div class="section-header">
+                    <h1 class="section-title">Messages</h1>
+                    <p class="section-subtitle">Communicate with your legal team</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="messages-container">
+                        <!-- Conversations List -->
+                        <div class="conversations-sidebar">
+                            <div class="conversations-header">
+                                <h5>Conversations</h5>
+                                <a href="404.html" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> New</a>
+                            </div>
+                            <div class="conversations-list">
+                                <div class="conversation-item active">
+                                    <img src="https://ui-avatars.com/api/?name=Attorney+Smith&background=random" alt="">
+                                    <div class="conversation-info">
+                                        <h6>Attorney Smith</h6>
+                                        <p>I've reviewed the documents you sent...</p>
+                                        <span class="conversation-time">2h ago</span>
+                                    </div>
+                                    <span class="unread-badge">2</span>
+                                </div>
+                                <div class="conversation-item">
+                                    <img src="https://ui-avatars.com/api/?name=Attorney+Johnson&background=random" alt="">
+                                    <div class="conversation-info">
+                                        <h6>Attorney Johnson</h6>
+                                        <p>The contract review is complete...</p>
+                                        <span class="conversation-time">Yesterday</span>
+                                    </div>
+                                </div>
+                                <div class="conversation-item">
+                                    <img src="https://ui-avatars.com/api/?name=Paralegal+Davis&background=random" alt="">
+                                    <div class="conversation-info">
+                                        <h6>Paralegal Davis</h6>
+                                        <p>Please sign the attached documents...</p>
+                                        <span class="conversation-time">2 days ago</span>
+                                    </div>
+                                    <span class="unread-badge">1</span>
+                                </div>
+                                <div class="conversation-item">
+                                    <img src="https://ui-avatars.com/api/?name=Support+Team&background=random" alt="">
+                                    <div class="conversation-info">
+                                        <h6>Support Team</h6>
+                                        <p>Your account has been verified...</p>
+                                        <span class="conversation-time">1 week ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Area -->
+                        <div class="chat-area">
+                            <div class="chat-header">
+                                <img src="https://ui-avatars.com/api/?name=Attorney+Smith&background=random" alt="">
+                                <div>
+                                    <h6>Attorney Smith</h6>
+                                    <span class="status online"><i class="fas fa-circle"></i> Online</span>
+                                </div>
+                                <div class="chat-actions">
+                                    <a href="404.html" class="btn-action"><i class="fas fa-phone"></i></a>
+                                    <a href="404.html" class="btn-action"><i class="fas fa-video"></i></a>
+                                    <a href="404.html" class="btn-action"><i class="fas fa-ellipsis-v"></i></a>
+                                </div>
+                            </div>
+                            <div class="chat-messages">
+                                <div class="message received">
+                                    <div class="message-content">
+                                        <p>Good morning! I've reviewed the property documents you uploaded yesterday.</p>
+                                        <span class="message-time">10:30 AM</span>
+                                    </div>
+                                </div>
+                                <div class="message sent">
+                                    <div class="message-content">
+                                        <p>Great! Do you need any additional information from my side?</p>
+                                        <span class="message-time">10:35 AM</span>
+                                    </div>
+                                </div>
+                                <div class="message received">
+                                    <div class="message-content">
+                                        <p>Yes, could you please provide the property survey report? It will help strengthen our case.</p>
+                                        <span class="message-time">10:40 AM</span>
+                                    </div>
+                                </div>
+                                <div class="message received">
+                                    <div class="message-content">
+                                        <p>Also, I've scheduled a hearing for next month. I'll send you the details shortly.</p>
+                                        <span class="message-time">10:41 AM</span>
+                                    </div>
+                                </div>
+                                <div class="message sent">
+                                    <div class="message-content">
+                                        <p>Perfect, I'll upload the survey report today. Thanks for the update!</p>
+                                        <span class="message-time">10:45 AM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input-area">
+                                <a href="404.html" class="btn-action"><i class="fas fa-paperclip"></i></a>
+                                <input type="text" placeholder="Type your message..." class="chat-input">
+                                <a href="404.html" class="btn btn-primary btn-send"><i class="fas fa-paper-plane"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payments Section -->
+            <section class="content-section" id="payments">
+                <div class="section-header">
+                    <h1 class="section-title">Payments</h1>
+                    <p class="section-subtitle">Manage your billing and invoices</p>
+                </div>
+
+                <!-- Payment Summary Cards -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="payment-summary-card">
+                            <div class="payment-icon bg-danger-soft">
+                                <i class="fas fa-file-invoice-dollar text-danger"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h4>$2,450.00</h4>
+                                <p>Outstanding Balance</p>
+                            </div>
+                            <a href="404.html" class="btn btn-danger btn-sm">Pay Now</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="payment-summary-card">
+                            <div class="payment-icon bg-success-soft">
+                                <i class="fas fa-check-circle text-success"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h4>$8,200.00</h4>
+                                <p>Total Paid (YTD)</p>
+                            </div>
+                            <a href="404.html" class="btn btn-outline-success btn-sm">View History</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="payment-summary-card">
+                            <div class="payment-icon bg-primary-soft">
+                                <i class="fas fa-credit-card text-primary"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h4>**** 4242</h4>
+                                <p>Default Payment Method</p>
+                            </div>
+                            <a href="404.html" class="btn btn-outline-primary btn-sm">Manage</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invoices Table -->
+                <div class="content-card">
+                    <div class="card-header-custom">
+                        <h5 class="card-title">Recent Invoices</h5>
+                        <a href="404.html" class="btn btn-sm btn-outline-primary">Download All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Invoice #</th>
+                                    <th>Description</th>
+                                    <th>Case</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="case-id">#INV-2026-056</span></td>
+                                    <td>Legal Consultation Fee</td>
+                                    <td>#2024-001</td>
+                                    <td>Jun 28, 2026</td>
+                                    <td><strong>$850.00</strong></td>
+                                    <td><span class="badge-status status-pending">Unpaid</span></td>
+                                    <td>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-eye"></i></a>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-download"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="case-id">#INV-2026-055</span></td>
+                                    <td>Document Review & Filing</td>
+                                    <td>#2024-002</td>
+                                    <td>Jun 25, 2026</td>
+                                    <td><strong>$1,200.00</strong></td>
+                                    <td><span class="badge-status status-pending">Unpaid</span></td>
+                                    <td>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-eye"></i></a>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-download"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="case-id">#INV-2026-050</span></td>
+                                    <td>Case Management (Monthly)</td>
+                                    <td>#2024-003</td>
+                                    <td>Jun 15, 2026</td>
+                                    <td><strong>$400.00</strong></td>
+                                    <td><span class="badge-status status-active">Paid</span></td>
+                                    <td>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-eye"></i></a>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-download"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="case-id">#INV-2026-045</span></td>
+                                    <td>Court Filing Fees</td>
+                                    <td>#2024-001</td>
+                                    <td>Jun 10, 2026</td>
+                                    <td><strong>$350.00</strong></td>
+                                    <td><span class="badge-status status-active">Paid</span></td>
+                                    <td>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-eye"></i></a>
+                                        <a href="404.html" class="btn-action"><i class="fas fa-download"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Legal Resources Section -->
+            <section class="content-section" id="legal-resources">
+                <div class="section-header">
+                    <h1 class="section-title">Legal Resources</h1>
+                    <p class="section-subtitle">Helpful guides and legal information</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="resource-card">
+                            <div class="resource-image">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="resource-content">
+                                <span class="resource-category">Guide</span>
+                                <h5>Understanding Property Law</h5>
+                                <p>A comprehensive guide to property rights, disputes, and legal procedures.</p>
+                                <div class="resource-meta">
+                                    <span><i class="fas fa-clock"></i> 15 min read</span>
+                                    <a href="404.html" class="btn btn-sm btn-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="resource-card">
+                            <div class="resource-image bg-success-soft">
+                                <i class="fas fa-file-contract text-success"></i>
+                            </div>
+                            <div class="resource-content">
+                                <span class="resource-category">Template</span>
+                                <h5>Contract Review Checklist</h5>
+                                <p>Essential checklist for reviewing business contracts and agreements.</p>
+                                <div class="resource-meta">
+                                    <span><i class="fas fa-download"></i> PDF Download</span>
+                                    <a href="404.html" class="btn btn-sm btn-primary">Download</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="resource-card">
+                            <div class="resource-image bg-warning-soft">
+                                <i class="fas fa-video text-warning"></i>
+                            </div>
+                            <div class="resource-content">
+                                <span class="resource-category">Video</span>
+                                <h5>Family Law Basics</h5>
+                                <p>Video tutorial covering divorce, custody, and estate planning basics.</p>
+                                <div class="resource-meta">
+                                    <span><i class="fas fa-clock"></i> 25 min</span>
+                                    <a href="404.html" class="btn btn-sm btn-primary">Watch</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="resource-card">
+                            <div class="resource-image bg-info-soft">
+                                <i class="fas fa-question-circle text-info"></i>
+                            </div>
+                            <div class="resource-content">
+                                <span class="resource-category">FAQ</span>
+                                <h5>Common Legal Questions</h5>
+                                <p>Answers to frequently asked questions about legal processes and rights.</p>
+                                <div class="resource-meta">
+                                    <span><i class="fas fa-list"></i> 50+ Q&As</span>
+                                    <a href="404.html" class="btn btn-sm btn-primary">View FAQ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="resource-card">
+                            <div class="resource-image bg-danger-soft">
+                                <i class="fas fa-calculator text-danger"></i>
+                            </div>
+                            <div class="resource-content">
+                                <span class="resource-category">Tool</span>
+                                <h5>Legal Fee Calculator</h5>
+                                <p>Estimate legal costs for different types of cases and services.</p>
+                                <div class="resource-meta">
+                                    <span><i class="fas fa-calculator"></i> Interactive</span>
+                                    <a href="404.html" class="btn btn-sm btn-primary">Calculate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="resource-card">
+                            <div class="resource-image bg-primary-soft">
+                                <i class="fas fa-shield-alt text-primary"></i>
+                            </div>
+                            <div class="resource-content">
+                                <span class="resource-category">Guide</span>
+                                <h5>IP Protection Guide</h5>
+                                <p>How to protect your intellectual property: trademarks, patents, and copyrights.</p>
+                                <div class="resource-meta">
+                                    <span><i class="fas fa-clock"></i> 20 min read</span>
+                                    <a href="404.html" class="btn btn-sm btn-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section class="content-section" id="profile">
+                <div class="section-header">
+                    <h1 class="section-title">My Profile</h1>
+                    <p class="section-subtitle">Manage your personal information</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="content-card profile-card">
+                            <div class="profile-header">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=6366f1&color=fff&size=128" alt="Profile" class="profile-avatar-large">
+                                <h4>John Doe</h4>
+                                <p>Client Since Jan 2024</p>
+                                <span class="profile-badge">Premium Member</span>
+                            </div>
+                            <div class="profile-stats">
+                                <div class="profile-stat">
+                                    <h5>16</h5>
+                                    <p>Total Cases</p>
+                                </div>
+                                <div class="profile-stat">
+                                    <h5>12</h5>
+                                    <p>Resolved</p>
+                                </div>
+                                <div class="profile-stat">
+                                    <h5>4</h5>
+                                    <p>Active</p>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <a href="404.html" class="btn btn-primary w-100 mb-2">Change Photo</a>
+                                <a href="404.html" class="btn btn-outline-secondary w-100">View Public Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="content-card">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Personal Information</h5>
+                            </div>
+                            <div class="card-body-custom">
+                                <form class="profile-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control-custom" value="John">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control-custom" value="Doe">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email Address</label>
+                                            <input type="email" class="form-control-custom" value="john.doe@email.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="tel" class="form-control-custom" value="+1 (555) 123-4567">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Date of Birth</label>
+                                            <input type="date" class="form-control-custom" value="1985-06-15">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Occupation</label>
+                                            <input type="text" class="form-control-custom" value="Business Owner">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Address</label>
+                                            <textarea class="form-control-custom" rows="2">123 Main Street, Apt 4B, New York, NY 10001</textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Emergency Contact</label>
+                                            <div class="row g-2">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control-custom" placeholder="Name" value="Jane Doe">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="tel" class="form-control-custom" placeholder="Phone" value="+1 (555) 987-6543">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <a href="404.html" class="btn btn-primary">Save Changes</a>
+                                        <a href="404.html" class="btn btn-outline-secondary ms-2">Cancel</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="content-card mt-4">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Security Settings</h5>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="security-item">
+                                    <div>
+                                        <h6>Password</h6>
+                                        <p>Last changed 3 months ago</p>
+                                    </div>
+                                    <a href="404.html" class="btn btn-outline-primary btn-sm">Change Password</a>
+                                </div>
+                                <div class="security-item">
+                                    <div>
+                                        <h6>Two-Factor Authentication</h6>
+                                        <p>Currently enabled via SMS</p>
+                                    </div>
+                                    <a href="404.html" class="btn btn-outline-primary btn-sm">Manage 2FA</a>
+                                </div>
+                                <div class="security-item">
+                                    <div>
+                                        <h6>Login History</h6>
+                                        <p>Last login: Today at 9:30 AM from New York, NY</p>
+                                    </div>
+                                    <a href="404.html" class="btn btn-outline-primary btn-sm">View History</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support Section -->
+            <section class="content-section" id="support">
+                <div class="section-header">
+                    <h1 class="section-title">Support</h1>
+                    <p class="section-subtitle">Get help and contact our team</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="content-card">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Submit a Support Ticket</h5>
+                            </div>
+                            <div class="card-body-custom">
+                                <form class="support-form">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Ticket Type</label>
+                                            <select class="form-control-custom">
+                                                <option>General Inquiry</option>
+                                                <option>Technical Issue</option>
+                                                <option>Billing Question</option>
+                                                <option>Case Related</option>
+                                                <option>Feedback</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Priority</label>
+                                            <select class="form-control-custom">
+                                                <option>Low</option>
+                                                <option>Medium</option>
+                                                <option>High</option>
+                                                <option>Urgent</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Subject</label>
+                                            <input type="text" class="form-control-custom" placeholder="Brief description of your issue">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Message</label>
+                                            <textarea class="form-control-custom" rows="5" placeholder="Describe your issue in detail..."></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Attachments</label>
+                                            <div class="file-upload-area">
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                                <p>Drag & drop files here or <span>browse</span></p>
+                                                <small>Supported: PDF, DOC, JPG, PNG (Max 10MB)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <a href="404.html" class="btn btn-primary">Submit Ticket</a>
+                                        <a href="404.html" class="btn btn-outline-secondary ms-2">Save as Draft</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="content-card">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">Contact Information</h5>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h6>Phone Support</h6>
+                                        <p>+1 (800) 123-4567</p>
+                                        <small>Mon-Fri, 9AM - 6PM EST</small>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h6>Email Support</h6>
+                                        <p>support@stackly.com</p>
+                                        <small>Response within 24 hours</small>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h6>Live Chat</h6>
+                                        <p>Available Now</p>
+                                        <small>Average wait: 2 minutes</small>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-info">
+                                        <h6>Office Address</h6>
+                                        <p>123 Legal Street, Suite 100</p>
+                                        <small>New York, NY 10001</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-card mt-4">
+                            <div class="card-header-custom">
+                                <h5 class="card-title">FAQs</h5>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="faq-list">
+                                    <div class="faq-item">
+                                        <h6><i class="fas fa-question-circle"></i> How do I upload documents?</h6>
+                                        <p>Go to My Documents and click the Upload button. You can drag and drop files or browse your computer.</p>
+                                    </div>
+                                    <div class="faq-item">
+                                        <h6><i class="fas fa-question-circle"></i> How do I schedule an appointment?</h6>
+                                        <p>Use the Appointments section or click "Schedule New" from your dashboard.</p>
+                                    </div>
+                                    <div class="faq-item">
+                                        <h6><i class="fas fa-question-circle"></i> How do I pay my invoice?</h6>
+                                        <p>Go to Payments, find your invoice, and click "Pay Now" to complete payment securely.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>&copy; 2026 Stackly. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="user-script.js"></script>
+    <style>
+        /* ============================================
+   STACKLY USER DASHBOARD - USER-STYLE.CSS
+   Modern, Professional, Client-Facing Design
+   ============================================ */
+
+/* CSS Variables */
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #3b82f6;
+    --dark-color: #1e293b;
+    --light-color: #f8fafc;
+    --sidebar-width: 280px;
+    --sidebar-collapsed: 80px;
+    --header-height: 70px;
+    --transition-speed: 0.3s;
+    --border-radius: 16px;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    --box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-speed) ease;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ============================================
+   SIDEBAR STYLES
+   ============================================ */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    color: #fff;
+    z-index: 1040;
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+/* Sidebar Header / Logo */
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    min-height: var(--header-height);
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #fff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    padding: 5px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.sidebar-close:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Sidebar User Info */
+.sidebar-user {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.sidebar-user-info h6 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #fff;
+}
+
+.sidebar-user-info span {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+    flex: 1;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-menu {
+    padding: 0 15px;
+}
+
+.menu-item {
+    margin-bottom: 4px;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--primary-color);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    border-radius: 0 4px 4px 0;
+}
+
+.menu-link:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+}
+
+.menu-link:hover::before {
+    transform: scaleY(1);
+}
+
+.menu-item.active .menu-link {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0.05));
+}
+
+.menu-item.active .menu-link::before {
+    transform: scaleY(1);
+}
+
+.menu-icon {
+    width: 24px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.menu-text {
+    white-space: nowrap;
+    transition: opacity 0.3s;
+    flex: 1;
+}
+
+.menu-badge {
+    background: var(--danger-color);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 50px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Sidebar Footer / Logout */
+.sidebar-footer {
+    padding: 15px;
+    margin-top: auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: #ef4444;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.logout-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+}
+
+/* ============================================
+   MAIN WRAPPER
+   ============================================ */
+.main-wrapper {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    transition: margin-left var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   HEADER STYLES
+   ============================================ */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background: #fff;
+    height: var(--header-height);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hamburger-menu,
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #64748b;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.hamburger-menu:hover,
+.sidebar-toggle:hover {
+    background: #f1f5f9;
+    color: var(--primary-color);
+}
+
+.page-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+    width: 280px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+    font-size: 14px;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Header Right */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-icon-wrapper {
+    position: relative;
+}
+
+.header-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #64748b;
+    font-size: 18px;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.header-icon:hover {
+    background: #f1f5f9;
+    color: var(--primary-color);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background: var(--danger-color);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+    position: relative;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px 6px 6px;
+    background: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.profile-btn:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.profile-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: #334155;
+}
+
+.profile-arrow {
+    font-size: 12px;
+    color: #94a3b8;
+    transition: transform 0.3s;
+}
+
+.profile-dropdown.active .profile-arrow {
+    transform: rotate(180deg);
+}
+
+.profile-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 200px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-lg);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1050;
+    border: 1px solid #e2e8f0;
+}
+
+.profile-dropdown.active .profile-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #334155;
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+    background: #f1f5f9;
+    color: var(--primary-color);
+}
+
+.dropdown-item.text-danger:hover {
+    background: #fef2f2;
+    color: var(--danger-color);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 8px 0;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.main-content {
+    flex: 1;
+    padding: 24px;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Header */
+.section-header {
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.section-subtitle {
+    font-size: 15px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ============================================
+   CONTENT SECTIONS
+   ============================================ */
+.content-section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* ============================================
+   STAT CARDS - USER STYLE
+   ============================================ */
+.stat-card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid #f1f5f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+}
+
+.stat-card-primary::before { background: var(--primary-color); }
+.stat-card-success::before { background: var(--success-color); }
+.stat-card-warning::before { background: var(--warning-color); }
+.stat-card-info::before { background: var(--info-color); }
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.stat-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.stat-card-primary .stat-card-icon { background: rgba(99, 102, 241, 0.1); color: var(--primary-color); }
+.stat-card-success .stat-card-icon { background: rgba(16, 185, 129, 0.1); color: var(--success-color); }
+.stat-card-warning .stat-card-icon { background: rgba(245, 158, 11, 0.1); color: var(--warning-color); }
+.stat-card-info .stat-card-icon { background: rgba(59, 130, 246, 0.1); color: var(--info-color); }
+
+.stat-card-info h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+    line-height: 1;
+}
+
+.stat-card-info p {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+.stat-card-trend {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748b;
+    text-align: right;
+}
+
+.stat-card-trend.up {
+    color: var(--success-color);
+}
+
+.stat-card-trend i {
+    margin-right: 2px;
+}
+
+/* ============================================
+   CONTENT CARDS
+   ============================================ */
+.content-card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid #f1f5f9;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.content-card:hover {
+    box-shadow: var(--box-shadow-lg);
+}
+
+.card-header-custom {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+.card-body-custom {
+    padding: 24px;
+}
+
+/* ============================================
+   ACTIVITY LIST
+   ============================================ */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.activity-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid #f1f5f9;
+    transition: all 0.3s;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item:hover {
+    background: #f8fafc;
+    margin: 0 -24px;
+    padding: 20px 24px;
+    border-radius: 12px;
+}
+
+.activity-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-content h6 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.activity-content p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.activity-time {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+/* ============================================
+   APPOINTMENT LIST
+   ============================================ */
+.appointment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.appointment-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.appointment-item:hover {
+    background: #f1f5f9;
+    transform: translateX(4px);
+}
+
+.appointment-date {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.appointment-date .day {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.appointment-date .month {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.appointment-details {
+    flex: 1;
+}
+
+.appointment-details h6 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.appointment-details p {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 3px;
+}
+
+.appointment-details p i {
+    width: 16px;
+    margin-right: 4px;
+}
+
+.appointment-with {
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+.table-custom {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-custom thead th {
+    padding: 14px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.table-custom tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.table-custom tbody tr {
+    transition: background 0.2s;
+}
+
+.table-custom tbody tr:hover {
+    background: #f8fafc;
+}
+
+.case-id {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 13px;
+}
+
+/* Badges */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-active {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+}
+
+.status-pending {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+}
+
+.status-hearing {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+}
+
+.status-review {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--info-color);
+}
+
+.status-resolved {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+}
+
+.status-closed {
+    background: rgba(100, 116, 139, 0.1);
+    color: var(--secondary-color);
+}
+
+/* Action Buttons */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    color: #64748b;
+    margin-right: 4px;
+    transition: all 0.2s;
+    background: #f8fafc;
+}
+
+.btn-action:hover {
+    background: #f1f5f9;
+    color: var(--primary-color);
+}
+
+.btn-action.text-danger:hover {
+    background: #fef2f2;
+    color: var(--danger-color);
+}
+
+/* ============================================
+   FILTER BAR
+   ============================================ */
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filter-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+/* ============================================
+   CASE CARDS
+   ============================================ */
+.case-card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.case-resolved {
+    opacity: 0.85;
+}
+
+.case-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.case-badge {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.case-menu a {
+    color: #94a3b8;
+    padding: 4px;
+}
+
+.case-menu a:hover {
+    color: #64748b;
+}
+
+.case-card h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.case-card .case-id {
+    font-size: 13px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.case-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.case-meta span {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.case-meta span i {
+    width: 18px;
+    margin-right: 6px;
+    color: #94a3b8;
+}
+
+.case-progress {
+    margin-bottom: 20px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #64748b;
+}
+
+.progress-custom {
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-custom {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease;
+}
+
+.case-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.case-attorney {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.case-attorney img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.case-attorney span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+}
+
+/* ============================================
+   DOCUMENT CARDS V2
+   ============================================ */
+.document-card-v2 {
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.document-card-v2:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.document-preview {
+    width: 64px;
+    height: 64px;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--danger-color);
+    margin-bottom: 16px;
+}
+
+.document-preview.doc-word { background: rgba(59, 130, 246, 0.1); color: var(--info-color); }
+.document-preview.doc-image { background: rgba(16, 185, 129, 0.1); color: var(--success-color); }
+.document-preview.doc-excel { background: rgba(16, 185, 129, 0.1); color: var(--success-color); }
+
+.document-info {
+    flex: 1;
+}
+
+.document-info h5 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 6px;
+    word-break: break-word;
+}
+
+.document-info p {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.document-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.document-meta span {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.document-meta span i {
+    margin-right: 4px;
+}
+
+.document-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.document-actions .btn-action {
+    flex: 1;
+    margin: 0;
+}
+
+/* ============================================
+   SEARCH BOX LARGE
+   ============================================ */
+.search-box-large {
+    position: relative;
+}
+
+.search-box-large i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.search-box-large .form-control-custom {
+    padding-left: 48px;
+}
+
+/* ============================================
+   APPOINTMENT LIST V2
+   ============================================ */
+.appointment-list-v2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.appointment-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.3s;
+}
+
+.appointment-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
+}
+
+.appointment-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.appointment-status.confirmed {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+}
+
+.appointment-status.pending {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+}
+
+.appointment-body h5 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.appointment-case {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.appointment-details-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.appointment-details-row span {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.appointment-details-row span i {
+    margin-right: 6px;
+    color: #94a3b8;
+}
+
+.appointment-attorney {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+.appointment-attorney img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.appointment-attorney h6 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #1e293b;
+}
+
+.appointment-attorney p {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+.appointment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* ============================================
+   QUICK SCHEDULE FORM
+   ============================================ */
+.quick-schedule-form .form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.meeting-type-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.meeting-option {
+    flex: 1;
+    min-width: 80px;
+    cursor: pointer;
+}
+
+.meeting-option input {
+    display: none;
+}
+
+.meeting-option span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+    transition: all 0.3s;
+}
+
+.meeting-option span i {
+    font-size: 20px;
+}
+
+.meeting-option input:checked + span {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.05);
+    color: var(--primary-color);
+}
+
+/* ============================================
+   MESSAGES / CHAT
+   ============================================ */
+.messages-container {
+    display: flex;
+    height: 600px;
+}
+
+.conversations-sidebar {
+    width: 320px;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.conversations-header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.conversations-header h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.conversations-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.conversation-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.conversation-item:hover,
+.conversation-item.active {
+    background: #f1f5f9;
+}
+
+.conversation-item img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.conversation-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.conversation-info h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 3px;
+}
+
+.conversation-info p {
+    font-size: 13px;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.conversation-time {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.unread-badge {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: var(--danger-color);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Chat Area */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.chat-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.chat-header h6 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #1e293b;
+}
+
+.chat-header .status {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.chat-header .status.online {
+    color: var(--success-color);
+}
+
+.chat-header .status i {
+    font-size: 8px;
+}
+
+.chat-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #f8fafc;
+}
+
+.message {
+    display: flex;
+    max-width: 70%;
+}
+
+.message.received {
+    align-self: flex-start;
+}
+
+.message.sent {
+    align-self: flex-end;
+}
+
+.message-content {
+    padding: 12px 16px;
+    border-radius: 16px;
+    position: relative;
+}
+
+.message.received .message-content {
+    background: #fff;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.message.sent .message-content {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.message-content p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 6px;
+}
+
+.message-time {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.chat-input-area {
+    padding: 16px 20px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.chat-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.btn-send {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   PAYMENT SUMMARY CARDS
+   ============================================ */
+.payment-summary-card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.3s;
+}
+
+.payment-summary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.payment-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.payment-info {
+    flex: 1;
+}
+
+.payment-info h4 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.payment-info p {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ============================================
+   RESOURCE CARDS
+   ============================================ */
+.resource-card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid #f1f5f9;
+    overflow: hidden;
+    transition: all 0.3s;
+    height: 100%;
+}
+
+.resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.resource-image {
+    height: 160px;
+    background: rgba(99, 102, 241, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: var(--primary-color);
+}
+
+.resource-content {
+    padding: 24px;
+}
+
+.resource-category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+
+.resource-content h5 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.resource-content p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.resource-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resource-meta span {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* ============================================
+   PROFILE CARD
+   ============================================ */
+.profile-card {
+    text-align: center;
+}
+
+.profile-header {
+    padding: 32px 24px;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+}
+
+.profile-avatar-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 16px;
+}
+
+.profile-header h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.profile-header p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.profile-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 50px;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.profile-stat {
+    text-align: center;
+}
+
+.profile-stat h5 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.profile-stat p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+}
+
+.profile-actions {
+    padding: 20px;
+}
+
+/* ============================================
+   PROFILE FORM
+   ============================================ */
+.profile-form .form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.form-control-custom {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    background: #f8fafc;
+    transition: all 0.3s;
+    outline: none;
+    color: #334155;
+}
+
+.form-control-custom:focus {
+    border-color: var(--primary-color);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Security Settings */
+.security-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.security-item:last-child {
+    border-bottom: none;
+}
+
+.security-item h6 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.security-item p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ============================================
+   SUPPORT FORM
+   ============================================ */
+.support-form .form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.file-upload-area {
+    border: 2px dashed #e2e8f0;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-upload-area:hover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.02);
+}
+
+.file-upload-area i {
+    font-size: 36px;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+
+.file-upload-area p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.file-upload-area p span {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.file-upload-area small {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Contact Items */
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.contact-info h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 3px;
+}
+
+.contact-info p {
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 2px;
+}
+
+.contact-info small {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* FAQ */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    padding: 16px;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.faq-item h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.faq-item h6 i {
+    color: var(--primary-color);
+}
+
+.faq-item p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.main-footer {
+    padding: 20px 24px;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+    background: #fff;
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* ============================================
+   MOBILE OVERLAY
+   ============================================ */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1035;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================
+   COLLAPSED SIDEBAR (Desktop)
+   ============================================ */
+.sidebar.collapsed {
+    width: var(--sidebar-collapsed);
+}
+
+.sidebar.collapsed .logo-text,
+.sidebar.collapsed .menu-text,
+.sidebar.collapsed .logout-btn span,
+.sidebar.collapsed .sidebar-user-info {
+    opacity: 0;
+    display: none;
+}
+
+.sidebar.collapsed .logo-container,
+.sidebar.collapsed .menu-link,
+.sidebar.collapsed .logout-btn,
+.sidebar.collapsed .sidebar-user {
+    justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-menu {
+    padding: 0 10px;
+}
+
+.sidebar.collapsed .menu-link {
+    padding: 12px;
+}
+
+.sidebar.collapsed .menu-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 9px;
+    padding: 1px 5px;
+}
+
+.sidebar.collapsed + .main-wrapper {
+    margin-left: var(--sidebar-collapsed);
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #fff;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-outline-primary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.btn-outline-secondary {
+    background: transparent;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.btn-outline-secondary:hover {
+    background: #f1f5f9;
+}
+
+.btn-outline-danger {
+    background: transparent;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+}
+
+.btn-outline-danger:hover {
+    background: var(--danger-color);
+    color: #fff;
+}
+
+.btn-outline-success {
+    background: transparent;
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.btn-outline-success:hover {
+    background: var(--success-color);
+    color: #fff;
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 13px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.ms-2 {
+    margin-left: 0.5rem;
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+@media (max-width: 1199.98px) {
+    .search-box {
+        width: 200px;
+    }
+    
+    .messages-container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .conversations-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: var(--sidebar-width);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(-100%);
+        width: var(--sidebar-width);
+    }
+
+    .sidebar.collapsed .logo-text,
+    .sidebar.collapsed .menu-text,
+    .sidebar.collapsed .logout-btn span,
+    .sidebar.collapsed .sidebar-user-info {
+        display: block;
+        opacity: 1;
+    }
+
+    .sidebar.collapsed .menu-link {
+        justify-content: flex-start;
+        padding: 12px 16px;
+    }
+
+    .sidebar.collapsed .sidebar-menu {
+        padding: 0 15px;
+    }
+
+    .sidebar.collapsed .logout-btn {
+        justify-content: flex-start;
+        padding: 12px 16px;
+    }
+
+    .main-wrapper {
+        margin-left: 0;
+    }
+
+    .sidebar-close {
+        display: block;
+    }
+
+    .search-box {
+        width: 180px;
+    }
+
+    .profile-name {
+        display: none !important;
+    }
+    
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .stat-card-trend {
+        margin: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .main-content {
+        padding: 16px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .search-box {
+        width: 140px;
+    }
+
+    .search-input {
+        padding: 8px 10px 8px 36px;
+        font-size: 13px;
+    }
+
+    .card-header-custom {
+        padding: 16px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .table-custom thead th,
+    .table-custom tbody td {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-group {
+        justify-content: center;
+    }
+    
+    .appointment-details-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .appointment-actions {
+        flex-direction: column;
+    }
+    
+    .chat-messages {
+        padding: 12px;
+    }
+    
+    .message {
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .main-header {
+        padding: 0 12px;
+    }
+
+    .header-left {
+        gap: 8px;
+    }
+
+    .header-right {
+        gap: 4px;
+    }
+
+    .search-box {
+        width: 120px;
+    }
+
+    .main-content {
+        padding: 12px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-card-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    
+    .case-card {
+        padding: 16px;
+    }
+    
+    .document-card-v2 {
+        padding: 16px;
+    }
+    
+    .resource-content {
+        padding: 16px;
+    }
+}
+
+/* Smooth scrollbar */
+.main-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+/* Utility classes */
+.text-danger {
+    color: var(--danger-color) !important;
+}
+
+.bg-primary-soft { background: rgba(99, 102, 241, 0.1); }
+.bg-success-soft { background: rgba(16, 185, 129, 0.1); }
+.bg-warning-soft { background: rgba(245, 158, 11, 0.1); }
+.bg-info-soft { background: rgba(59, 130, 246, 0.1); }
+.bg-danger-soft { background: rgba(239, 68, 68, 0.1); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+.logo{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.logo-img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+}
+
+.logo-text{
+    font-family:'Playfair Display', serif;
+    font-size:24px;
+    font-weight:600;
+    color:#fff;
+    margin:0;
+}
+    </style>
+    <script>/* ============================================
+   STACKLY USER DASHBOARD - USER-SCRIPT.JS
+   Client-Facing Dashboard Interactive Functions
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ==========================================
+    // DOM Elements
+    // ==========================================
+    const sidebar = document.getElementById('sidebar');
+    const mainWrapper = document.getElementById('mainWrapper');
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const sidebarClose = document.getElementById('sidebarClose');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const profileBtn = document.getElementById('profileBtn');
+    const profileMenu = document.getElementById('profileMenu');
+    const menuItems = document.querySelectorAll('.menu-item');
+    const contentSections = document.querySelectorAll('.content-section');
+    const pageTitle = document.getElementById('pageTitle');
+
+    // Page titles mapping
+    const pageTitles = {
+        'dashboard': 'Dashboard',
+        'my-cases': 'My Cases',
+        'documents': 'My Documents',
+        'appointments': 'Appointments',
+        'messages': 'Messages',
+        'payments': 'Payments',
+        'legal-resources': 'Legal Resources',
+        'profile': 'My Profile',
+        'support': 'Support'
+    };
+
+    // ==========================================
+    // Mobile Sidebar Toggle
+    // ==========================================
+    function openMobileSidebar() {
+        sidebar.classList.add('active');
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileSidebar() {
+        sidebar.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    hamburgerMenu.addEventListener('click', openMobileSidebar);
+    sidebarClose.addEventListener('click', closeMobileSidebar);
+    mobileOverlay.addEventListener('click', closeMobileSidebar);
+
+    // ==========================================
+    // Desktop Sidebar Collapse
+    // ==========================================
+    let sidebarCollapsed = false;
+
+    sidebarToggle.addEventListener('click', function() {
+        sidebarCollapsed = !sidebarCollapsed;
+        sidebar.classList.toggle('collapsed');
+        localStorage.setItem('userSidebarCollapsed', sidebarCollapsed);
+    });
+
+    // Restore sidebar state
+    const savedState = localStorage.getItem('userSidebarCollapsed');
+    if (savedState === 'true') {
+        sidebarCollapsed = true;
+        sidebar.classList.add('collapsed');
+    }
+
+    // ==========================================
+    // Profile Dropdown Toggle
+    // ==========================================
+    profileBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        profileDropdown.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!profileDropdown.contains(e.target)) {
+            profileDropdown.classList.remove('active');
+        }
+    });
+
+    // ==========================================
+    // Section Navigation (Sidebar Menu)
+    // ==========================================
+    menuItems.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const sectionId = this.getAttribute('data-section');
+            
+            // Remove active class from all menu items
+            menuItems.forEach(function(mi) {
+                mi.classList.remove('active');
+            });
+            
+            // Add active class to clicked menu item
+            this.classList.add('active');
+            
+            // Hide all content sections
+            contentSections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update page title
+            if (pageTitle && pageTitles[sectionId]) {
+                pageTitle.textContent = pageTitles[sectionId];
+            }
+            
+            // Update document title
+            document.title = 'Stackly - ' + (pageTitles[sectionId] || 'Dashboard');
+            
+            // Close mobile sidebar after selection
+            if (window.innerWidth < 992) {
+                closeMobileSidebar();
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Animate progress bars if entering cases section
+            if (sectionId === 'my-cases') {
+                setTimeout(animateProgressBars, 300);
+            }
+        });
+    });
+
+    // ==========================================
+    // Handle Window Resize
+    // ==========================================
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 992) {
+            closeMobileSidebar();
+        }
+    });
+
+    // ==========================================
+    // Search Box Focus Effects
+    // ==========================================
+    const searchInputs = document.querySelectorAll('.search-input');
+    searchInputs.forEach(function(input) {
+        input.addEventListener('focus', function() {
+            if (this.parentElement.classList.contains('search-box')) {
+                this.parentElement.style.transform = 'scale(1.02)';
+            }
+        });
+        
+        input.addEventListener('blur', function() {
+            if (this.parentElement.classList.contains('search-box')) {
+                this.parentElement.style.transform = 'scale(1)';
+            }
+        });
+    });
+
+    // ==========================================
+    // Animate Stat Cards on Load
+    // ==========================================
+    function animateStatCards() {
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach(function(card, index) {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(function() {
+                card.style.transition = 'all 0.6s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    }
+
+    animateStatCards();
+
+    // ==========================================
+    // Progress Bar Animation
+    // ==========================================
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-bar-custom');
+        progressBars.forEach(function(bar) {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(function() {
+                bar.style.transition = 'width 1s ease';
+                bar.style.width = width;
+            }, 100);
+        });
+    }
+
+    // Animate on initial load if dashboard has progress bars
+    setTimeout(animateProgressBars, 500);
+
+    // ==========================================
+    // Filter Buttons
+    // ==========================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(function(b) {
+                b.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+
+    // ==========================================
+    // Conversation Selection
+    // ==========================================
+    const conversationItems = document.querySelectorAll('.conversation-item');
+    conversationItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            conversationItems.forEach(function(ci) {
+                ci.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+
+    // ==========================================
+    // Chat Input Enter Key
+    // ==========================================
+    const chatInput = document.querySelector('.chat-input');
+    if (chatInput) {
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                // In a real app, this would send the message
+                console.log('Message sent:', this.value);
+                this.value = '';
+            }
+        });
+    }
+
+    // ==========================================
+    // File Upload Area
+    // ==========================================
+    const fileUploadArea = document.querySelector('.file-upload-area');
+    if (fileUploadArea) {
+        fileUploadArea.addEventListener('click', function() {
+            // In a real app, this would open a file picker
+            console.log('File upload clicked');
+        });
+        
+        fileUploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.borderColor = 'var(--primary-color)';
+            this.style.background = 'rgba(99, 102, 241, 0.05)';
+        });
+        
+        fileUploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#e2e8f0';
+            this.style.background = 'transparent';
+        });
+        
+        fileUploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '#e2e8f0';
+            this.style.background = 'transparent';
+            // In a real app, handle file drop
+            console.log('Files dropped:', e.dataTransfer.files);
+        });
+    }
+
+    // ==========================================
+    // Notification Badge Animation
+    // ==========================================
+    const badges = document.querySelectorAll('.notification-badge');
+    badges.forEach(function(badge, index) {
+        badge.style.animation = `pulse 2s infinite ${index * 0.5}s`;
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // ==========================================
+    // Table Row Hover Animation
+    // ==========================================
+    const tableRows = document.querySelectorAll('.table-custom tbody tr');
+    tableRows.forEach(function(row) {
+        row.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 0.2s ease';
+        });
+    });
+
+    // ==========================================
+    // Keyboard Navigation Support
+    // ==========================================
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMobileSidebar();
+            profileDropdown.classList.remove('active');
+        }
+    });
+
+    // ==========================================
+    // Touch Swipe Support for Mobile Sidebar
+    // ==========================================
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    document.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+        const swipeThreshold = 100;
+        const diff = touchEndX - touchStartX;
+        
+        if (diff > swipeThreshold && touchStartX < 50) {
+            openMobileSidebar();
+        }
+        
+        if (diff < -swipeThreshold && sidebar.classList.contains('active')) {
+            closeMobileSidebar();
+        }
+    }
+
+    // ==========================================
+    // Active Menu Highlight on Page Load
+    // ==========================================
+    function setActiveMenuFromHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash && pageTitles[hash]) {
+            const targetMenu = document.querySelector(`[data-section="${hash}"]`);
+            if (targetMenu) {
+                targetMenu.click();
+            }
+        }
+    }
+
+    setActiveMenuFromHash();
+
+    // ==========================================
+    // Activity Item Animation
+    // ==========================================
+    const activityItems = document.querySelectorAll('.activity-item');
+    const activityObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateX(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    activityItems.forEach(function(item) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+        item.style.transition = 'all 0.4s ease';
+        activityObserver.observe(item);
+    });
+
+    // ==========================================
+    // Console Welcome Message
+    // ==========================================
+    console.log('%c Stackly User Dashboard ', 'background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; font-size: 20px; font-weight: bold; padding: 10px 20px; border-radius: 10px;');
+    console.log('%c Welcome to your Stackly Client Portal ', 'color: #6366f1; font-size: 14px;');
+
+});</script>
+</body>
+</html>
